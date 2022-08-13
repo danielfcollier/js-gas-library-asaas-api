@@ -6,7 +6,7 @@ function CustomerCreate(apiKey, customer) {
     headers: _getHeaders(apiKey),
     payload: customer,
   };
-  const response = JSON.parse(FetchApp.Post(request)?.getContentText());
+  const response = FetchApp.GetJson(FetchApp.Post(request));
 
   const isCreated = CustomerRead(apiKey, response?.id)?.id == response?.id;
 
@@ -25,9 +25,9 @@ function CustomerRead(apiKey, id) {
     endpoint,
     headers: _getHeaders(apiKey),
   };
-  const response = FetchApp.Get(request);
+  const response = FetchApp.GetJson(FetchApp.Get(request));
 
-  return JSON.parse(response?.getContentText());
+  return response;
 }
 
 function CustomerUpdate(apiKey, customer, id) {

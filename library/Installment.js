@@ -11,7 +11,7 @@ function InstallmentCreate(apiKey, installment) {
   const isCreated = InstallmentRead(apiKey, response?.installment)?.id == response?.installment;
 
   if (!isCreated) {
-    throw ERRORS.INSTALLMENT.CREATE(installment);
+    throw ERRORS.INSTALLMENT.CREATE({ ...installment, installmentId: response?.installment });
   }
 
   ServiceLogger('Created installment', installment.customer, response.installment);
@@ -33,7 +33,7 @@ function InstallmentRead(apiKey, installmentId) {
 function InstallmentUpdate(apiKey, installment, installmentId) {
   const { deleted } = InstallmentDelete(apiKey, installment, installmentId);
   if (!deleted) {
-    throw ERRORS.INSTALLMENT.UPDATE(installment);
+    throw ERRORS.INSTALLMENT.UPDATE({ ...installment, installmentId });
   }
 
   const response = InstallmentCreate(apiKey, installment);
@@ -55,7 +55,7 @@ function InstallmentDelete(apiKey, installment, installmentId) {
     return response;
   }
 
-  throw ERRORS.INSTALLMENT.DELETE(installment);
+  throw ERRORS.INSTALLMENT.DELETE({ ...installment, installmentId });
 }
 
 // function InstallmentRefund(apiKey, id, payload = null) {
