@@ -3,4 +3,5 @@ const ENDPOINT = {
   CUSTOMER: 'customers',
   PAYMENT: 'payments',
   INSTALLMENT: 'installments',
+  RECEIPT: 'invoices',
 };
