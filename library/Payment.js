@@ -14,6 +14,7 @@ function PaymentCreate(apiKey, payment) {
     throw ERRORS.PAYMENT.CREATE(payment);
   }
 
+  ServiceLogger('Created payment', payment.customer, response.id);
   return response;
 }
 
@@ -51,6 +52,7 @@ function PaymentUpdate(apiKey, payment, id) {
     throw ERRORS.PAYMENT.UPDATE(payment);
   }
 
+  ServiceLogger('Updated payment', payment.customer, id);
   return updatedPayment;
 }
 
@@ -63,6 +65,7 @@ function PaymentDelete(apiKey, payment, id) {
   };
   const response = FetchApp.GetJson(FetchApp.Delete(request));
   if (response?.deleted) {
+    ServiceLogger('Deleted payment', payment.customer, id);
     return response;
   }
 

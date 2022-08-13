@@ -14,6 +14,7 @@ function CustomerCreate(apiKey, customer) {
     throw ERRORS.CUSTOMER.CREATE(customer);
   }
 
+  ServiceLogger('Created customer', response.id);
   return response;
 }
 
@@ -51,6 +52,7 @@ function CustomerUpdate(apiKey, customer, id) {
     throw ERRORS.CUSTOMER.UPDATE(customer);
   }
 
+  ServiceLogger('Updated customer', id);
   return updatedCustomer;
 }
 
@@ -63,6 +65,7 @@ function CustomerDelete(apiKey, customer, id) {
   };
   const response = FetchApp.GetJson(FetchApp.Delete(request));
   if (response?.deleted) {
+    ServiceLogger('Deleted customer', id);
     return response;
   }
 

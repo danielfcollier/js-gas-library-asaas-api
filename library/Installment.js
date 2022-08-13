@@ -11,9 +11,10 @@ function InstallmentCreate(apiKey, installment) {
   const isCreated = InstallmentRead(apiKey, response?.installment)?.id == response?.installment;
 
   if (!isCreated) {
-    throw ERRORS.PAYMENT.CREATE(installment);
+    throw ERRORS.INSTALLMENT.CREATE(installment);
   }
 
+  ServiceLogger('Created installment', installment.customer, response.installment);
   return response;
 }
 
@@ -32,15 +33,16 @@ function InstallmentRead(apiKey, installmentId) {
 function InstallmentUpdate(apiKey, installment, installmentId) {
   const { deleted } = InstallmentDelete(apiKey, installment, installmentId);
   if (!deleted) {
-    throw ERRORS.PAYMENT.UPDATE(installment);
+    throw ERRORS.INSTALLMENT.UPDATE(installment);
   }
 
   const response = InstallmentCreate(apiKey, installment);
 
+  ServiceLogger('Updated installment', installment.customer, response.installment);
   return response;
 }
 
-function InstallmentDelete(apiKey, payment, installmentId) {
+function InstallmentDelete(apiKey, installment, installmentId) {
   const endpoint = `${ENDPOINT.INSTALLMENT}/${installmentId}`;
   const request = {
     url,
@@ -49,10 +51,11 @@ function InstallmentDelete(apiKey, payment, installmentId) {
   };
   const response = FetchApp.GetJson(FetchApp.Delete(request));
   if (response?.deleted) {
+    ServiceLogger('Deleted installment', installment.customer, installmentId);
     return response;
   }
 
-  throw ERRORS.PAYMENT.DELETE(payment);
+  throw ERRORS.INSTALLMENT.DELETE(installment);
 }
 
 // function InstallmentRefund(apiKey, id, payload = null) {
