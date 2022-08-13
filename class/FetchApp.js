@@ -44,6 +44,26 @@ class FetchApp {
     return UrlFetchApp.fetch(`${url}/${endpoint}`, params);
   }
 
+  static Put(request) {
+    const {
+      url,
+      endpoint,
+      headers,
+      payload,
+    } = request;
+
+    const params = {
+      method: 'put',
+      headers: {
+        ...headers,
+        'content-type': 'application/json',
+      },
+      payload: JSON.stringify(payload),
+    };
+
+    return UrlFetchApp.fetch(`${url}/${endpoint}`, params);
+  }
+
   static Delete(request) {
     const {
       url,
