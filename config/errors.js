@@ -9,4 +9,9 @@ const ERRORS = {
     UPDATE: (payment) => new Error(`Could not update payment! ${payment?.id} - ${payment?.description}`, { name: 'AsaasAPIError' }),
     DELETE: (payment) => new Error(`Could not delete payment! ${payment?.id} - ${payment?.description}`, { name: 'AsaasAPIError' }),
   },
+  INSTALLMENT: {
+    CREATE: (installment) => new Error(`Could not create installment! ${installment?.installmentId} - ${installment?.description}`, { name: 'AsaasAPIError' }),
+    UPDATE: (installment) => new Error(`Could not update installment! ${installment?.installmentId} - ${installment?.description}`, { name: 'AsaasAPIError' }),
+    DELETE: (installment) => new Error(`Could not delete installment! ${installment?.installmentId} - ${installment?.description}`, { name: 'AsaasAPIError' }),
+  },
 };
