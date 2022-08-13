@@ -69,18 +69,18 @@ function PaymentDelete(apiKey, payment, id) {
   throw ERRORS.PAYMENT.DELETE(payment);
 }
 
-function PaymentRefund(apiKey, id, payload = null) {
-  const endpoint = `${ENDPOINT.PAYMENT}/${id}/refund`;
-  const request = {
-    url,
-    endpoint,
-    headers: _getHeaders(apiKey),
-    payload: JSON.stringify(payload),
-  };
-  const response = FetchApp.GetJson(FetchApp.Post(request));
+// function PaymentRefund(apiKey, id, payload = null) {
+//   const endpoint = `${ENDPOINT.PAYMENT}/${id}/refund`;
+//   const request = {
+//     url,
+//     endpoint,
+//     headers: _getHeaders(apiKey),
+//     payload: JSON.stringify(payload),
+//   };
+//   const response = FetchApp.GetJson(FetchApp.Post(request));
 
-  return response?.refunds;
-}
+//   return response?.refunds;
+// }
 
 function PaymentGetBarCode(apiKey, id) {
   const endpoint = `${ENDPOINT.PAYMENT}/${id}/identificationField`;
