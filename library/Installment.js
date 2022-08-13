@@ -3,7 +3,7 @@ function InstallmentCreate(apiKey, installment) {
   const request = {
     url,
     endpoint,
-    headers: _getHeaders(apiKey),
+    headers: getHeaders_(apiKey),
     payload: installment,
   };
   const response = FetchApp.GetJson(FetchApp.Post(request));
@@ -23,7 +23,7 @@ function InstallmentRead(apiKey, installmentId) {
   const request = {
     url,
     endpoint,
-    headers: _getHeaders(apiKey),
+    headers: getHeaders_(apiKey),
   };
   const response = FetchApp.GetJson(FetchApp.Get(request));
 
@@ -47,7 +47,7 @@ function InstallmentDelete(apiKey, installment, installmentId) {
   const request = {
     url,
     endpoint,
-    headers: _getHeaders(apiKey),
+    headers: getHeaders_(apiKey),
   };
   const response = FetchApp.GetJson(FetchApp.Delete(request));
   if (response?.deleted) {
@@ -63,7 +63,7 @@ function InstallmentDelete(apiKey, installment, installmentId) {
 //   const request = {
 //     url,
 //     endpoint,
-//     headers: _getHeaders(apiKey),
+//     headers: getHeaders_(apiKey),
 //     payload: JSON.stringify(payload),
 //   };
 //   const response = FetchApp.GetJson(FetchApp.Post(request));

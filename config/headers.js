@@ -1,5 +1,5 @@
 const url = BASE_URL;
-const _getHeaders = (apiKey) => {
+const getHeaders_ = (apiKey) => {
   return {
     'Access_Token': apiKey,
   };

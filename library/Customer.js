@@ -3,7 +3,7 @@ function CustomerCreate(apiKey, customer) {
   const request = {
     url,
     endpoint,
-    headers: _getHeaders(apiKey),
+    headers: getHeaders_(apiKey),
     payload: customer,
   };
   const response = FetchApp.GetJson(FetchApp.Post(request));
@@ -23,7 +23,7 @@ function CustomerRead(apiKey, id) {
   const request = {
     url,
     endpoint,
-    headers: _getHeaders(apiKey),
+    headers: getHeaders_(apiKey),
   };
   const response = FetchApp.GetJson(FetchApp.Get(request));
 
@@ -35,7 +35,7 @@ function CustomerUpdate(apiKey, customer, id) {
   const request = {
     url,
     endpoint,
-    headers: _getHeaders(apiKey),
+    headers: getHeaders_(apiKey),
     payload: customer,
   };
   const response = FetchApp.GetJson(FetchApp.Post(request));
@@ -61,7 +61,7 @@ function CustomerDelete(apiKey, customer, id) {
   const request = {
     url,
     endpoint,
-    headers: _getHeaders(apiKey),
+    headers: getHeaders_(apiKey),
   };
   const response = FetchApp.GetJson(FetchApp.Delete(request));
   if (response?.deleted) {
@@ -77,7 +77,7 @@ function CustomerAll(apiKey) {
   const request = {
     url,
     endpoint,
-    headers: _getHeaders(apiKey),
+    headers: getHeaders_(apiKey),
   };
   const response = FetchApp.GetJson(FetchApp.Get(request));
 

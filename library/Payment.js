@@ -3,7 +3,7 @@ function PaymentCreate(apiKey, payment) {
   const request = {
     url,
     endpoint,
-    headers: _getHeaders(apiKey),
+    headers: getHeaders_(apiKey),
     payload: payment,
   };
   const response = FetchApp.GetJson(FetchApp.Post(request));
@@ -23,7 +23,7 @@ function PaymentRead(apiKey, id) {
   const request = {
     url,
     endpoint,
-    headers: _getHeaders(apiKey),
+    headers: getHeaders_(apiKey),
   };
   const response = FetchApp.GetJson(FetchApp.Get(request));
 
@@ -35,7 +35,7 @@ function PaymentUpdate(apiKey, payment, id) {
   const request = {
     url,
     endpoint,
-    headers: _getHeaders(apiKey),
+    headers: getHeaders_(apiKey),
     payload: payment,
   };
   const response = FetchApp.GetJson(FetchApp.Post(request));
@@ -61,7 +61,7 @@ function PaymentDelete(apiKey, payment, id) {
   const request = {
     url,
     endpoint,
-    headers: _getHeaders(apiKey),
+    headers: getHeaders_(apiKey),
   };
   const response = FetchApp.GetJson(FetchApp.Delete(request));
   if (response?.deleted) {
@@ -77,7 +77,7 @@ function PaymentDelete(apiKey, payment, id) {
 //   const request = {
 //     url,
 //     endpoint,
-//     headers: _getHeaders(apiKey),
+//     headers: getHeaders_(apiKey),
 //     payload: JSON.stringify(payload),
 //   };
 //   const response = FetchApp.GetJson(FetchApp.Post(request));
@@ -90,7 +90,7 @@ function PaymentGetBarCode(apiKey, id) {
   const request = {
     url,
     endpoint,
-    headers: _getHeaders(apiKey),
+    headers: getHeaders_(apiKey),
   };
   const response = FetchApp.GetJson(FetchApp.Get(request));
 
@@ -102,7 +102,7 @@ function PaymenGetPixCode(apiKey, id) {
   const request = {
     url,
     endpoint,
-    headers: _getHeaders(apiKey),
+    headers: getHeaders_(apiKey),
   };
   const response = FetchApp.GetJson(FetchApp.Get(request));
 
